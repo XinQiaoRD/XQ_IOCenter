@@ -1,0 +1,320 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type">
+    <meta content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+	<title>宏丰讲解员端</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="target-densitydpi=device-dpi,width=1024px,user-scalable=no">
+	<script>
+        var DEFAULT_WIDTH = 1024,//页面的默认宽度
+            ua=navigator.userAgent.toLowerCase(),//根据useragent的信息获取浏览器信息
+            deviceWidth=window.screen.width,//设备的宽度
+            devicePixelRatio=window.devicePixelRatio||1,//物理像素和设备独立像素的比例，默认为1
+            targetDensitydpi;
+        //Android4.0以下手机不支持viewport的width，需要设置target-densitydpi
+        if(ua.indexOf("android")!==-1&&parseFloat(ua.slice(ua.indexOf("android")+8))<4){
+            targetDensitydpi=DEFAULT_WIDTH/deviceWidth*devicePixelRatio*160;
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'target-densitydpi=' + targetDensitydpi + ',width=device-width,user-scalable=no');
+        }
+	</script>
+
+	<link rel="apple-touch-icon-precomposed" href="icon_logo.png" />
+
+	<link rel="stylesheet" href="./src/css/style.css" />
+	<link rel="stylesheet" href="./src/css/index.css" />
+
+
+
+	<!--<link rel="stylesheet" href="lib/swiper/swiper.min.css" />-->
+    <!--<link rel="stylesheet" href="lib/mov/mov.css"/>-->
+    <!--<link rel="stylesheet" href="src/css/style.css" />-->
+	<!--<link rel="stylesheet" href="src/plug/VideoCtrl/VideoCtrl.css" />-->
+    
+
+</head>
+<body ondragstart="return false" onselect="return false" onselectstart="return false" oncontextmenu="return false">
+<div id="_unable"></div>
+<div id="app">
+
+	<section class="cc" id="Loader">
+		<img src="img/loader.svg" width="54">
+	</section>
+
+    <section class="cc" id="Exit">
+        已关闭，请重新打开
+    </section>
+
+	<section class="cc" id="Index">
+		<div class="mainTP">
+			<div class="title po">
+				<p class="en">Central control system</p>
+        		<p class="cn">讲解员辅助系统</p>
+			</div>
+			<div class="logo po">
+				<!--<img src="img/LOGO.png" alt="" />-->
+			</div>
+		</div>
+		<div class="main">
+			<div class="Index-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<ul>
+							<li data-id="1">
+								<img src="img/index/icon1.png">
+								<div class="txt">
+									<p class="txt_en">development <br>history</p>
+									<p class="txt_cn">发展历程</p>
+
+								</div>
+							</li>
+							<li data-id="2">
+								<img src="img/index/icon2.png">
+								<div class="txt">
+									<p class="txt_en">Social<br>obligation</p>
+									<p class="txt_cn">社会义务</p>
+								</div>
+							</li>
+							<li data-id="3">
+								<img src="img/index/icon3.png">
+								<div class="txt">
+									<p class="txt_en">Development history<br>of alloy materials</p>
+									<p class="txt_cn">合金材料发展史</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- Add Pagination -->
+				<!--<div class="Index-pagination"></div>-->
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="cc Video" id="Video1">
+
+		<div class="MainTP">
+			<div class="title">
+				<p class="title_en">Central control system</p>
+				<p class="title_cn">发展历程</p>
+			</div>
+			<div class="return">
+				<img src="img/return.png" alt="" />
+			</div>
+			<div class="information">
+				<div class="icon">
+					<img src="img/index/icon1.png" width="132" height="128" alt="" />
+				</div>
+				<div class="text">
+					<p class="title">讲解辅助：</p>
+					<p class="container">本视频以时间轴形式，描述宏丰自创立之初发展至今的大事记，让参观者清晰了解宏丰波澜壮阔的发展历程。</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="Film1Ctrl" class="VideoCtrl"></div>
+
+	</section>
+
+	<section class="cc Video" id="Video2">
+
+		<div class="MainTP">
+			<div class="title">
+				<p class="title_en">Central control system</p>
+				<p class="title_cn">社会义务</p>
+			</div>
+			<div class="return">
+				<img src="img/return.png" alt="" />
+			</div>
+			<div class="information">
+				<div class="icon">
+					<img src="img/index/icon2.png" width="132" height="128" alt="" />
+				</div>
+				<div class="text">
+					<p class="title">讲解辅助：</p>
+					<p class="container">本视频以图文翻页形式，展现宏丰在环保事业、慈善公益事业等方面所做的贡献，展示宏丰在社会义务方面的担当。</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="Film2Ctrl" class="VideoCtrl"></div>
+
+	</section>
+
+	<section class="cc Video" id="Video3">
+
+		<div class="MainTP">
+			<div class="title">
+				<p class="title_en">Central control system</p>
+				<p class="title_cn">合金材料发展史</p>
+			</div>
+			<div class="return">
+				<img src="img/return.png" alt="" />
+			</div>
+			<div class="information">
+				<div class="icon">
+					<img src="img/index/icon3.png" width="132" height="128" alt="" />
+				</div>
+				<div class="text">
+					<p class="title">讲解辅助：</p>
+					<p class="container"></p>
+				</div>
+			</div>
+		</div>
+
+		<div id="Film3Ctrl" class="VideoCtrl"></div>
+
+	</section>
+
+
+	<script type="text/template" id="TPHM_Video">
+		<div class="MainTP">
+			<div class="title">
+				<p class="title_en">{$ten}</p>
+				<p class="title_cn">{$tcn}</p>
+			</div>
+			<div class="return">
+				<img src="img/return.png" alt="" />
+			</div>
+			<div class="information">
+				<div class="icon">
+					<img src="{$src}" width="132" height="128" alt="" />
+				</div>
+				<div class="text">
+					<p class="title">讲解辅助：</p>
+					<p class="container">{$info}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="TPHMCtrl VideoCtrl"></div>
+	</script>
+
+</div>
+
+<script type="text/template" id="VideoCtrl_View">
+
+	<div class="timebar">
+		<div class="time_math">0%</div>
+		<progress class="time_progress" value="0" max="100"></progress>
+		<div class="time_now">00:00:00</div>
+		<div class="time_len">00:00:00</div>
+	</div>
+
+	<div class="button">
+
+		<div class="play">
+			<div class="btn"></div>
+			<div class="txt">
+				<p class="txt_en">click to pause</p>
+				<p class="txt_cn">点击播放</p>
+			</div>
+		</div>
+
+		<div class="backward">
+			<div class="btn"></div>
+			<div class="txt">
+				<p class="txt_en">Backward</p>
+				<p class="txt_cn">重新开始</p>
+			</div>
+		</div>
+
+		<div class="forward">
+			<div class="btn"></div>
+			<div class="txt">
+				<p class="txt_en">Forward</p>
+				<p class="txt_cn">立即结束</p>
+			</div>
+		</div>
+
+		<div class="volume">
+			<div class="vol_down">
+				<div class="btn"></div>
+				<div class="txt">
+					<p class="txt_en">volume down</p>
+					<p class="txt_cn">音量减小</p>
+				</div>
+			</div>
+			<div class="vol_bg">
+				<div class="vol_pot"><img src="src/plug/VideoCtrl/img/vol_pot.png" /></div>
+				<div class="vol_num">100%</div>
+			</div>
+			<div class="vol_up">
+				<div class="btn"></div>
+				<div class="txt">
+					<p class="txt_en">volume up</p>
+					<p class="txt_cn">音量加大</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</script>
+
+</body>
+
+<!--基础插件-->
+<!--<script src="lib/jquery-2.1.4.min.js"></script>-->
+<!--<script src="lib/jquery.mobile/jquery.mobile-1.4.5.js"></script>-->
+<!--<script src="lib/underscore.js"></script>-->
+<!--<script src="socket.io/socket.io.js"></script>-->
+<!--&lt;!&ndash;Tool&ndash;&gt;-->
+<!--<script src="lib/mov/mov.js"></script>-->
+<!--Hammer-->
+<!--JS插件-->
+<!--<script src="lib/swiper/swiper.min.js"></script>-->
+<!--<script src="src/plug/VideoCtrl/VideoCtrl.js"></script>-->
+
+<!--MVC主程序-->
+<!--<script src="lib/cc/mvc.js"></script>-->
+
+<!--<script src="lib/cc/mvc.js"></script>-->
+<!--<script src="src/js/view.js"></script>-->
+<!--<script src="src/js/room.js"></script>-->
+<!--<script src="src/js/action.js"></script>-->
+
+<!--<script src="src/js/IOClient.js"></script>-->
+
+<script src="./lib/jquery-2.1.4.min.js"></script>
+<script src="./lib/jquery.mobile-1.4.5.min.js"></script>
+<script src="./lib/createjs/createjs-2015.11.26.min.js"></script>
+<script src="lib/ws.js"></script>
+
+<script src="./lib/velocity/velocity.js"></script>
+
+<script src="./lib/libs.js"></script>
+<script src="./lib/libs_canvas.js"></script>
+
+<script src="./src/js/resize.js"></script>
+<script src="./src/js/init.js"></script>
+
+<script src="./src/js/index.js"></script>
+
+<script>
+    $("body").on('touchmove',function(event){ event.preventDefault(); },false);
+
+    $(window).load(function(){
+        $("iframe").hide();
+        $("#ad_colse_container").remove();
+        $("body > *").each(function(){
+            if(!$(this).hasClass("ui-page")) $(this).hide();
+        });
+    });
+
+	$(function(){
+        ws = new ws_client("ws://localhost:3001", {id:"Guide"});
+        ws.connect( function(){
+            loader()
+        } );
+	});
+
+</script>
+
+</html>

@@ -1,0 +1,168 @@
+﻿.VideoCtrl{
+    position: absolute; left: 60px; top: 320px;
+    width: 900px; height: 300px;
+}
+
+.VideoCtrl .timebar{
+    position: absolute; left: 0; top: 0;
+    width: 100%; height: 130px;
+}
+.VideoCtrl .timebar .time_math{
+    position: absolute;
+    left: -15px;
+    top: 0px;
+    width: 69px;
+    height: 59px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    background: url(img/math.png) no-repeat;
+}
+.VideoCtrl progress{
+    position: absolute;
+    top: 60px; left: 20px;
+    display:block;
+    width: 868px;
+    height: 7px;
+    -webkit-border-radius: 3px/3px 3px 4px 4px;
+    -moz-border-radius: 3px/3px 3px 4px 4px;
+    border-radius: 3px/3px 3px 4px 4px;
+    background-color: rgba(0,0,0,.2);
+    -webkit-box-shadow: inset 0 1px rgba(0,0,0,.75);
+    -moz-box-shadow: inset 0 1px rgba(0,0,0,.75);
+    box-shadow: inset 0 1px rgba(0,0,0,.75);
+}
+
+.VideoCtrl progress::-webkit-progress-bar{
+    display:block;
+    width: 868px;
+    height: 7px;
+    -webkit-border-radius: 3px/3px 3px 4px 4px;
+    -moz-border-radius: 3px/3px 3px 4px 4px;
+    border-radius: 3px/3px 3px 4px 4px;
+    background-color: rgba(0,0,0,.2);
+    -webkit-box-shadow: inset 0 1px rgba(0,0,0,.75);
+    -moz-box-shadow: inset 0 1px rgba(0,0,0,.75);
+    box-shadow: inset 0 1px rgba(0,0,0,.75);
+}
+.VideoCtrl progress::-webkit-progress-value {
+    display:block;
+    height: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background-color: #2AADF1;
+    width:100%;
+    color: #fff;
+}
+.VideoCtrl .time_now{
+    position: absolute;
+    top: 80px; left: 20px;
+    font-size: 16px;
+    color: #fff;
+}
+.VideoCtrl .time_len{
+    position: absolute;
+    top: 80px; right: 12px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.VideoCtrl .button{}
+
+.VideoCtrl .play{
+    position: absolute; top: 138px; left: 20px;
+}
+.VideoCtrl .play .btn{
+    position: absolute; top: 0; left: 0;
+    width: 103px; height: 101px;
+    background: url("img/btn.png") no-repeat 0 0;
+}
+.VideoCtrl .play .btn.act{
+    position: absolute; top: 0; left: 0;
+    width: 103px; height: 101px;
+    background: url("img/btn.png") no-repeat -103px 0;
+}
+.VideoCtrl .play .txt{
+    position: absolute; top: 110px; left: 7px; width: 200px;
+}
+
+.VideoCtrl .backward{
+    position: absolute; top: 166px; left: 155px;
+}
+.VideoCtrl .backward .btn{
+    position: absolute; top: 0; left: 0;
+    width: 73px; height: 71px;
+    background: url("img/backward.png") no-repeat;
+}
+.VideoCtrl .backward .txt{
+    position: absolute; top: 81px; left: 7px; width: 200px;
+}
+
+.VideoCtrl .forward{
+    position: absolute; top: 166px; left: 250px;
+}
+.VideoCtrl .forward .btn{
+    position: absolute; top: 0; left: 0;
+    width: 73px; height: 71px;
+    background: url("img/forward.png") no-repeat;
+}
+.VideoCtrl .forward .txt{
+    position: absolute; top: 81px; left: 7px; width: 200px;
+}
+
+.VideoCtrl .vol_down{
+    position: absolute; top: 166px; left: 381px;
+}
+.VideoCtrl .vol_down .btn{
+    position: absolute; top: 0; left: 0;
+    width: 73px; height: 71px;
+    background: url("img/vol_down.png") no-repeat;
+}
+.VideoCtrl .vol_down .txt{
+    position: absolute; top: 81px; left: 7px; width: 200px;
+}
+
+.VideoCtrl .vol_up{
+    position: absolute; top: 166px; left: 813px;
+}
+.VideoCtrl .vol_up .btn{
+    position: absolute; top: 0; left: 0;
+    width: 73px; height: 71px;
+    background: url("img/vol_up.png") no-repeat;
+}
+.VideoCtrl .vol_up .txt{
+    position: absolute; top: 81px; left: 7px; width: 200px;
+}
+
+.VideoCtrl .vol_bg{
+    position: absolute; top: 175px; left: 472px;
+    background: url(img/vol_bg.png) no-repeat;
+    width: 324px;
+    height: 55px;
+}
+.VideoCtrl .vol_pot{
+    position: relative; left: 0; top:25px; float: left;
+    width: 70%; height: 29px; overflow: hidden;
+}
+.VideoCtrl .vol_num{
+    float: left;
+    color: #fff;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+.VideoCtrl .txt_cn{
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 3px 4px 3px rgba(0,0,0,.3);
+}
+.VideoCtrl .txt_en{
+    font-family: "Arial";
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 3px 4px 3px rgba(0,0,0,.3);
+}

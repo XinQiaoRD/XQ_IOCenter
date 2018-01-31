@@ -1,0 +1,22 @@
+<!--plug-indexMov-->
+<div class="indexMov">
+    <div class="transition">
+        <!--过渡视频-->
+    </div>
+    <div class="video">
+        <!--循环视频-->
+    </div>
+    <div class="lang">
+        <!--中英文字-->
+    </div>
+    <div class="skip">
+        <!--跳过按钮-->
+    </div>
+    <div class="hotImg">
+        <!--热点提示图-->
+    </div>
+    <div class="hotClick">
+        <!--热点点击设置-->
+    </div>
+</div>
+<!--plug-indexMov end-->

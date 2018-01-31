@@ -1,0 +1,70 @@
+﻿@charset "utf-8";
+*{  margin:0;padding:0; font-family:"Microsoft YaHei", "微软雅黑", "宋体", "Arial";
+    outline: none; -moz-user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-focus-ring-color: rgba(0, 0, 0, 0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+img{ border:0;}
+li{list-style:none;}
+h1,h2,h3,em,b{font-style:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+.hide{display: none}
+.clear{ width:0; height:0;clear:both;font-size:0;line-height:0}
+.top1{ height:1px; overflow: hidden}
+
+html,body{width: 1024px; height: 100%; overflow: hidden; background-color: #000;}
+.CC{position: relative; top:0; left: 0; overflow: hidden; }
+#_unable{
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 99999;
+    display: none;
+}
+video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+iframe{display: none; opacity: 0}
+.i-loader{display: none}
+.ui-loader{ display: none; opacity: 0;}
+
+.cc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+}
+.cc>.bg{ position: absolute; }
+.cc .bg.all img{ width: 700px; height: 100%}
+.cc>.main{position: absolute}
+#Loader{ display: block; background-color: #000}
+#Loader img{
+    position: absolute; left: 50%; margin-left: -44px; top:50%; margin-top: -44px;
+}
+#Loader .word{
+    position: absolute; top: 70%;
+    left: 50%; margin-left: -250px;
+    width: 500px; height: 50px; line-height: 50px;
+    color: #fff; font-size: 25px; text-align: center;
+}
+
+/*#_resize, #_resize_x{display: none;}*/
+/*#_resize .img{  position: absolute; left: 179px; top: 232px; }*/
+/*#_resize_x .img{ position: absolute; left: 523px; top: 92px; }*/
+/*#_resize .w{*/
+    /*position: absolute; width: 720px; top: 1000px;*/
+    /*color: #DBC17C; font-size: 30px; text-align: center;*/
+/*}*/
+/*#_resize_x .w{*/
+    /*position: absolute; width: 1280px; top: 565px;*/
+    /*color: #DBC17C; font-size: 30px; text-align: center;*/
+/*}*/
+
+#app{overflow: hidden}
+.cc{background-color: #f0e7e1}
+.cc .bg.p{ background-size:cover;}

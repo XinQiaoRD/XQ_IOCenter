@@ -1,0 +1,55 @@
+	<div class="timebar">
+		<div class="time_math">0%</div>
+		<progress class="time_val" value="0" max="100"></progress>
+		<div class="time_now">00:00:00</div>
+		<div class="time_len">00:00:00</div>
+	</div>
+
+	<div class="button">
+
+		<div class="play">
+			<div class="btn"></div>
+			<div class="txt">
+				<p class="txt_en">click to pause</p>
+				<p class="txt_cn">点击暂停</p>
+			</div>
+		</div>
+
+		<div class="backward">
+			<div class="btn"></div>
+			<div class="txt">
+				<p class="txt_en">Backward</p>
+				<p class="txt_cn">倒退播放</p>
+			</div>
+		</div>
+
+		<div class="forward">
+			<div class="btn"></div>
+			<div class="txt">
+				<p class="txt_en">Forward</p>
+				<p class="txt_cn">倒退播放</p>
+			</div>
+		</div>
+
+		<div class="volume">
+			<div class="down">
+				<div class="btn"></div>
+				<div class="txt">
+					<p class="txt_en">volume down</p>
+					<p class="txt_cn">音量减小</p>
+				</div>
+			</div>
+			<div class="volumes">
+				<div class="vol_bg"><img src="src/plug/VideoCtrl/img/volumes.png" /></div>
+				<div class="vol_text">100%</div>
+			</div>
+			<div class="up">
+				<div class="btn"></div>
+				<div class="txt">
+					<p class="txt_en">volume up</p>
+					<p class="txt_cn">音量加大</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
