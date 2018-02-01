@@ -1,30 +1,18 @@
 ////////菜单模块 plug-VideoCtrl
-var VGroup = {};
-var VNow = {};
 function VideoCtrl(pa){
 
     if(!pa.id){
         alert("plug-VideoCtrl,参数id未设置！");
         return;
     }
-    if(!pa.io){
-        alert("plug-VideoCtrl,参数远程要控制的视频IO名称！");
+    if(!pa.to){
+        alert("plug-VideoCtrl,参数远程要控制的视频名称！");
         return;
     }
 
     this.id = pa.id;
-    this.io = pa.io;
-    if(!pa.val) pa.val = "";
-    this.val = pa.val;
-    if(!pa.vid) pa.vid = "";
-    this.vid = pa.vid;
-
-    if(pa.group) {
-        this.group = pa.group;
-        if(!VGroup[this.group]) VGroup[this.group] = {};
-        VNow[this.group] = "";
-        VGroup[this.group][this.vid] = this;
-    }
+    this.nm = pa.id.replace('#', '');
+    this.to = pa.to;
 
     this.m = $(pa.id);
 
@@ -45,8 +33,8 @@ VideoCtrl.prototype.ini = function(pa){
 
     this.dom = {};
     this.dom.play = $(this.id+" .play .btn");
-    this.dom.backward = $(this.id+" .backward .btn");
-    this.dom.forward = $(this.id+" .forward .btn");
+    this.dom.replay = $(this.id+" .replay .btn");
+    this.dom.end = $(this.id+" .end .btn");
     this.dom.vol_up = $(this.id+" .vol_up .btn");
     this.dom.vol_down = $(this.id+" .vol_down .btn");
 
@@ -70,25 +58,18 @@ VideoCtrl.prototype.ini = function(pa){
         }else{
             this.dom.play.addClass("act");
             this.dom.play_txt.html("点击暂停");
-
-            if(this.group){
-                if(this.vid!=VNow[this.group] && VNow[this.group]){
-                    VGroup[this.group][VNow[this.group]].stop(0);
-                }
-                VNow[this.group] = this.vid;
-            }
             this.play();
 
         }
     }.bind(this));
 
-    this.dom.backward.tap(function(e){
+    this.dom.replay.tap(function(e){
         e.stopPropagation();
-        this.backward();
+        this.replay();
     }.bind(this));
-    this.dom.forward.tap(function(e){
+    this.dom.end.tap(function(e){
         e.stopPropagation();
-        this.forward();
+        this.end();
     }.bind(this));
     this.dom.vol_up.tap(function(e){
         e.stopPropagation();
@@ -105,20 +86,22 @@ VideoCtrl.prototype.ini = function(pa){
     this.volume(this.vol);
     this.videoLength();
 
-    socket.on(this.io+"End"+this.vid, function(){
+    ws.on(this.nm+"MediaEnd", function(){
         this.stop(0);
+    }.bind(this));
+
+    ws.on(this.nm+"MediaLoop", function(json){
+        this.playTime = parseInt(json.val);
     }.bind(this));
 
 };
 
 //获取片场
 VideoCtrl.prototype.videoLength = function(){
-
     if(this.VLen) return;
-
-    IO.emit({to:this.io , key:"MediaLength"+this.vid, val:this.val});
-    socket.on(this.io+"Length"+this.vid, function(json){
-        var vlen = parseInt(json.num);
+    ws.emit({to:this.to , key:"MediaLength"});
+    ws.on(this.nm+"MediaLength", function(json){
+        var vlen = parseInt(json.val);
         if(vlen) {
             this.VLen = vlen;
             var t = formatTime(vlen);
@@ -139,16 +122,20 @@ VideoCtrl.prototype.volume = function(vol){
     this.dom.vol_pot.css("width", num+"%");
     this.dom.vol_num.html(vol+"%");
 
-    IO.emit({to:this.io , key:"MediaVol"+this.vid , num:this.vol, val:this.val});
+    ws.emit({to:this.to , key:"MediaVol" , val:this.vol });
 
 };
 
 VideoCtrl.prototype.progress = function(){
 
+    if(!this.VLen) {
+        this.dom.time_math.css("left" , "0px").html("0%");
+        this.dom.time_progress.val(0);
+        return;
+    }
+
     if(this.playTime<0) this.playTime = 0;
     if(this.playTime>this.VLen) {
-        //this.playTime = this.VLen;
-        //this.end();
         this.playTime = 0;
     }
 
@@ -163,11 +150,12 @@ VideoCtrl.prototype.progress = function(){
 
 //播放
 VideoCtrl.prototype.play = function(start){
-
     if(!this.VLen) {
         this.videoLength();
         clearInterval(this.playHand);
-        this.stop();
+        this.dom.play.removeClass("act");
+        this.dom.play_txt.html("点击播放");
+        this.progress();
         return;
     }
 
@@ -176,10 +164,10 @@ VideoCtrl.prototype.play = function(start){
 
     if(start || start===0) {
         this.playTime = start;
-        IO.emit({to:this.io , key:"MediaTime" , num:this.playTime, val:this.val});
+        ws.emit({to:this.to , key:"MediaTime" , val:this.playTime});
     }
 
-    IO.emit({to:this.io , key:"MediaPlay"+this.vid, vol:this.vol, val:this.val});
+    ws.emit({to:this.to , key:"MediaPlay", val:this.vol});
 
     this.playHand = setInterval(function(){
         this.playTime++;
@@ -193,7 +181,7 @@ VideoCtrl.prototype.stop = function(end){
 
     if(end || end===0) {
         this.playTime = end;
-        IO.emit({to:this.io , key:"MediaTime"+this.vid , num:this.playTime, val:this.val});
+        ws.emit({to:this.to , key:"MediaTime", val:this.playTime});
     }
 
     this.dom.play.removeClass("act");
@@ -202,7 +190,7 @@ VideoCtrl.prototype.stop = function(end){
 
     this.progress();
 
-    IO.emit({to:this.io , key:"MediaStop"+this.vid, val:this.val});
+    ws.emit({to:this.to , key:"MediaStop"});
 };
 
 //完成
@@ -215,35 +203,14 @@ VideoCtrl.prototype.end = function(){
 
     this.progress();
 
-    IO.emit({to:this.io , key:"MediaEnd"+this.vid, val:this.val});
+    ws.emit({to:this.to , key:"MediaEnd"});
 };
 
-//快进
-VideoCtrl.prototype.forward = function(){
-    // this.playTime+= parseInt(this.VLen/20);
-    // this.progress();
-    //
-    // IO.emit({to:this.io , key:"time" , num:this.playTime, val:this.val});
-
-    this.playTime = 0;
-    this.dom.play.removeClass("act");
-    this.dom.play_txt.html("点击播放");
-    clearInterval(this.playHand);
-
-    this.progress();
-
-    IO.emit({to:this.io , key:"MediaEnd"+this.vid, val:this.val});
-};
-//快退
-VideoCtrl.prototype.backward = function(){
-    // this.playTime-= parseInt(this.VLen/20);
-    // this.progress();
-    //
-    // IO.emit({to:this.io , key:"time" , num:this.playTime, val:this.val});
-
+//重新开始
+VideoCtrl.prototype.replay = function(){
     this.playTime = 0;
     this.progress();
-    IO.emit({to:this.io , key:"MediaTime"+this.vid , num:this.playTime, val:this.val});
+    ws.emit({to:this.to , key:"MediaPlay", val:this.vol, time:0});
 };
 
 function formatTime(seconds) {

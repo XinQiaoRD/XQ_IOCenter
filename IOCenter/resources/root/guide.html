@@ -28,12 +28,7 @@
 	<link rel="stylesheet" href="./src/css/style.css" />
 	<link rel="stylesheet" href="./src/css/index.css" />
 
-
-
-	<!--<link rel="stylesheet" href="lib/swiper/swiper.min.css" />-->
-    <!--<link rel="stylesheet" href="lib/mov/mov.css"/>-->
-    <!--<link rel="stylesheet" href="src/css/style.css" />-->
-	<!--<link rel="stylesheet" href="src/plug/VideoCtrl/VideoCtrl.css" />-->
+	<link rel="stylesheet" href="./lib/VideoCtrl/VideoCtrl.css" />
     
 
 </head>
@@ -51,7 +46,7 @@
 
 	<section class="cc" id="Index">
 		<div class="mainTP">
-			<div class="title po">
+			<div class="title_index po">
 				<p class="en">Central control system</p>
         		<p class="cn">讲解员辅助系统</p>
 			</div>
@@ -100,7 +95,7 @@
 	<section class="cc Video" id="Video1">
 
 		<div class="MainTP">
-			<div class="title">
+			<div class="title" data-id="Video1">
 				<p class="title_en">Central control system</p>
 				<p class="title_cn">发展历程</p>
 			</div>
@@ -118,14 +113,14 @@
 			</div>
 		</div>
 
-		<div id="Film1Ctrl" class="VideoCtrl"></div>
+		<div id="VideoCtrl1" class="VideoCtrl"></div>
 
 	</section>
 
 	<section class="cc Video" id="Video2">
 
 		<div class="MainTP">
-			<div class="title">
+			<div class="title" data-id="Video2">
 				<p class="title_en">Central control system</p>
 				<p class="title_cn">社会义务</p>
 			</div>
@@ -143,14 +138,14 @@
 			</div>
 		</div>
 
-		<div id="Film2Ctrl" class="VideoCtrl"></div>
+		<div id="VideoCtrl2" class="VideoCtrl"></div>
 
 	</section>
 
 	<section class="cc Video" id="Video3">
 
 		<div class="MainTP">
-			<div class="title">
+			<div class="title" data-id="Video3">
 				<p class="title_en">Central control system</p>
 				<p class="title_cn">合金材料发展史</p>
 			</div>
@@ -168,33 +163,9 @@
 			</div>
 		</div>
 
-		<div id="Film3Ctrl" class="VideoCtrl"></div>
+		<div id="VideoCtrl3" class="VideoCtrl"></div>
 
 	</section>
-
-
-	<script type="text/template" id="TPHM_Video">
-		<div class="MainTP">
-			<div class="title">
-				<p class="title_en">{$ten}</p>
-				<p class="title_cn">{$tcn}</p>
-			</div>
-			<div class="return">
-				<img src="img/return.png" alt="" />
-			</div>
-			<div class="information">
-				<div class="icon">
-					<img src="{$src}" width="132" height="128" alt="" />
-				</div>
-				<div class="text">
-					<p class="title">讲解辅助：</p>
-					<p class="container">{$info}</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="TPHMCtrl VideoCtrl"></div>
-	</script>
 
 </div>
 
@@ -217,7 +188,7 @@
 			</div>
 		</div>
 
-		<div class="backward">
+		<div class="replay">
 			<div class="btn"></div>
 			<div class="txt">
 				<p class="txt_en">Backward</p>
@@ -225,7 +196,7 @@
 			</div>
 		</div>
 
-		<div class="forward">
+		<div class="end">
 			<div class="btn"></div>
 			<div class="txt">
 				<p class="txt_en">Forward</p>
@@ -242,7 +213,7 @@
 				</div>
 			</div>
 			<div class="vol_bg">
-				<div class="vol_pot"><img src="src/plug/VideoCtrl/img/vol_pot.png" /></div>
+				<div class="vol_pot"><img src="./lib/VideoCtrl/img/vol_pot.png" /></div>
 				<div class="vol_num">100%</div>
 			</div>
 			<div class="vol_up">
@@ -260,34 +231,14 @@
 
 </body>
 
-<!--基础插件-->
-<!--<script src="lib/jquery-2.1.4.min.js"></script>-->
-<!--<script src="lib/jquery.mobile/jquery.mobile-1.4.5.js"></script>-->
-<!--<script src="lib/underscore.js"></script>-->
-<!--<script src="socket.io/socket.io.js"></script>-->
-<!--&lt;!&ndash;Tool&ndash;&gt;-->
-<!--<script src="lib/mov/mov.js"></script>-->
-<!--Hammer-->
-<!--JS插件-->
-<!--<script src="lib/swiper/swiper.min.js"></script>-->
-<!--<script src="src/plug/VideoCtrl/VideoCtrl.js"></script>-->
-
-<!--MVC主程序-->
-<!--<script src="lib/cc/mvc.js"></script>-->
-
-<!--<script src="lib/cc/mvc.js"></script>-->
-<!--<script src="src/js/view.js"></script>-->
-<!--<script src="src/js/room.js"></script>-->
-<!--<script src="src/js/action.js"></script>-->
-
-<!--<script src="src/js/IOClient.js"></script>-->
-
 <script src="./lib/jquery-2.1.4.min.js"></script>
 <script src="./lib/jquery.mobile-1.4.5.min.js"></script>
 <script src="./lib/createjs/createjs-2015.11.26.min.js"></script>
-<script src="lib/ws.js"></script>
+<script src="./lib/underscore.js"></script>
+<script src="./lib/ws.js"></script>
 
 <script src="./lib/velocity/velocity.js"></script>
+<script src="./lib/VideoCtrl/VideoCtrl.js"></script>
 
 <script src="./lib/libs.js"></script>
 <script src="./lib/libs_canvas.js"></script>
@@ -297,22 +248,17 @@
 
 <script src="./src/js/index.js"></script>
 
+
 <script>
     $("body").on('touchmove',function(event){ event.preventDefault(); },false);
 
-    $(window).load(function(){
+	$(function(){
         $("iframe").hide();
         $("#ad_colse_container").remove();
         $("body > *").each(function(){
             if(!$(this).hasClass("ui-page")) $(this).hide();
         });
-    });
-
-	$(function(){
-        ws = new ws_client("ws://localhost:3001", {id:"Guide"});
-        ws.connect( function(){
-            loader()
-        } );
+        ini.loader();
 	});
 
 </script>

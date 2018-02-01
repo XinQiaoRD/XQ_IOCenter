@@ -51,21 +51,21 @@
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
-    background-color: #2AADF1;
+    background-color: #dc5750;
     width:100%;
-    color: #fff;
+    color: #6f573e;
 }
 .VideoCtrl .time_now{
     position: absolute;
     top: 80px; left: 20px;
     font-size: 16px;
-    color: #fff;
+    color: #6f573e;
 }
 .VideoCtrl .time_len{
     position: absolute;
     top: 80px; right: 12px;
     font-size: 16px;
-    color: #fff;
+    color: #6f573e;
 }
 
 .VideoCtrl .button{}
@@ -87,27 +87,27 @@
     position: absolute; top: 110px; left: 7px; width: 200px;
 }
 
-.VideoCtrl .backward{
+.VideoCtrl .replay{
     position: absolute; top: 166px; left: 155px;
 }
-.VideoCtrl .backward .btn{
+.VideoCtrl .replay .btn{
     position: absolute; top: 0; left: 0;
     width: 73px; height: 71px;
-    background: url("img/backward.png") no-repeat;
+    background: url("img/replay.png") no-repeat;
 }
-.VideoCtrl .backward .txt{
+.VideoCtrl .replay .txt{
     position: absolute; top: 81px; left: 7px; width: 200px;
 }
 
-.VideoCtrl .forward{
+.VideoCtrl .end{
     position: absolute; top: 166px; left: 250px;
 }
-.VideoCtrl .forward .btn{
+.VideoCtrl .end .btn{
     position: absolute; top: 0; left: 0;
     width: 73px; height: 71px;
-    background: url("img/forward.png") no-repeat;
+    background: url("img/end.png") no-repeat;
 }
-.VideoCtrl .forward .txt{
+.VideoCtrl .end .txt{
     position: absolute; top: 81px; left: 7px; width: 200px;
 }
 
@@ -147,7 +147,7 @@
 }
 .VideoCtrl .vol_num{
     float: left;
-    color: #fff;
+    color: #dc5750;
     font-size: 30px;
     margin-top: 10px;
     margin-left: 8px;
@@ -156,13 +156,13 @@
 .VideoCtrl .txt_cn{
     font-family: "Microsoft YaHei";
     font-size: 14px;
-    color: #fff;
-    text-shadow: 3px 4px 3px rgba(0,0,0,.3);
+    color: #6f573e;
+    /*text-shadow: 3px 4px 3px rgba(0,0,0,.3);*/
 }
 .VideoCtrl .txt_en{
     font-family: "Arial";
     font-size: 12px;
     text-transform: uppercase;
-    color: #fff;
-    text-shadow: 3px 4px 3px rgba(0,0,0,.3);
+    color: #6f573e;
+    /*text-shadow: 3px 4px 3px rgba(0,0,0,.3);*/
 }

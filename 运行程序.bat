@@ -1,6 +1,6 @@
 @echo off 
 
-choice /t 5 /d y /n > nul  
+choice /t 1 /d y /n > nul  
 start IOCenter\run.exe
 
 pause

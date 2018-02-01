@@ -79,8 +79,8 @@ ws_client.prototype.connect = function(fn){
                     Log("接收信息没有key，无法运行对应的on", json);
                     return;
                 }
-                if(!_this.on[json.key]) {
-                    Log(json.key+"ws.on(key, fn)未定义这个执行函数");
+                if(!_this.emit_fn[json.key]) {
+                    Log(json.key+" ws.on(key, fn)未定义这个执行函数",_this.emit_fn);
                     return;
                 }
 
@@ -120,8 +120,9 @@ ws_client.prototype.conn = function(fn){
 };
 
 ws_client.prototype.emit = function(msg){
+    if(!msg.type) msg.type = "emit";
     Log("emit发送", msg);
-    this.ws.send(msg);
+    this.ws.send(this.json2str(msg));
 };
 
 ws_client.prototype.on = function(key, fn){

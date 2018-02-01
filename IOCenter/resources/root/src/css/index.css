@@ -7,16 +7,16 @@
 #Index .po{
     position: absolute;
 }
-#Index .title{
+#Index .title_index{
     left: 48px; top: 54px;
 }
-#Index .title .en{
+#Index .title_index .en{
     font-size: 38px;
     text-transform: uppercase;
     color: #dc5750;
     /*text-shadow: 5px 9px 5px rgba(0,0,0,.3);*/
 }
-#Index .title .cn{
+#Index .title_index .cn{
     font-size: 24px;
     color: #6f573e;
     /*text-shadow: 5px 9px 5px rgba(0,0,0,.3);*/

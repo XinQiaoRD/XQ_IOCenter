@@ -29,7 +29,7 @@ wss.on('connection', function(ws) {
                 iows.conn(json);
                 break;
             case "emit":
-                iows.emitRun(json);
+                iows.emit(json);
                 break;
             case "back":
                 iows.backRun(json);
@@ -92,11 +92,6 @@ class IOServer {
         this.emit({type:"conn", key:"conn", val:val, id:this.id, room:this.room});
     }
 
-    emitRun(pa) {
-        Log("接收到emit类消息", pa);
-        this.emit(pa);
-    }
-
     backRun(pa) {
 
         if(!pa.to){
@@ -114,7 +109,13 @@ class IOServer {
         Log("emit发送",str);
 
         if(pa.to){
-            if(IOW.id[pa.to] && IOW.id[pa.to].ws) IOW.id[pa.to].ws.send(str);
+            if(IOW.id[pa.to] && IOW.id[pa.to].ws) {
+                try{
+                    IOW.id[pa.to].ws.send(str);
+                }catch (e){
+                    Log("发送失败，可能是对方已经退出", str);
+                }
+            }
         }else{
             this.ws.send(str);
         }
