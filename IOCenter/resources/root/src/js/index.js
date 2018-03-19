@@ -1,9 +1,9 @@
 Room.Loader = {};
 Room.Loader.ppt = function(){
-    var Start = "Index";
+    var Start = "Video1";
     cc.ppt(["Loader", Start] , function(after , callback){
         cc.m["Loader"].velocity({ opacity: 0}, { duration: 500, display: "none" });
-        after.come();
+        //after.come();
         cc.m[Start].show();
     })
 };
