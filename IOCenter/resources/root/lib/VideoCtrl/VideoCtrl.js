@@ -13,6 +13,8 @@ function VideoCtrl(pa){
     this.id = pa.id;
     this.nm = pa.id.replace('#', '');
     this.to = pa.to;
+    if(!pa.vs) this.vs = "";
+    else this.vs = pa.vs;
 
     this.m = $(pa.id);
 
@@ -99,7 +101,7 @@ VideoCtrl.prototype.ini = function(pa){
 //获取片场
 VideoCtrl.prototype.videoLength = function(){
     if(this.VLen) return;
-    ws.emit({to:this.to , key:"MediaLength"});
+    ws.emit({to:this.to , key:"MediaLength"+this.vs});
     ws.on(this.nm+"MediaLength", function(json){
         var vlen = parseInt(json.val);
         if(vlen) {
@@ -122,7 +124,7 @@ VideoCtrl.prototype.volume = function(vol){
     this.dom.vol_pot.css("width", num+"%");
     this.dom.vol_num.html(vol+"%");
 
-    ws.emit({to:this.to , key:"MediaVol" , val:this.vol });
+    ws.emit({to:this.to , key:"MediaVol"+this.vs , val:this.vol });
 
 };
 
@@ -164,10 +166,10 @@ VideoCtrl.prototype.play = function(start){
 
     if(start || start===0) {
         this.playTime = start;
-        ws.emit({to:this.to , key:"MediaTime" , val:this.playTime});
+        ws.emit({to:this.to , key:"MediaTime"+this.vs , val:this.playTime});
     }
 
-    ws.emit({to:this.to , key:"MediaPlay", val:this.vol});
+    ws.emit({to:this.to , key:"MediaPlay"+this.vs, val:this.vol});
 
     this.playHand = setInterval(function(){
         this.playTime++;
@@ -181,7 +183,7 @@ VideoCtrl.prototype.stop = function(end){
 
     if(end || end===0) {
         this.playTime = end;
-        ws.emit({to:this.to , key:"MediaTime", val:this.playTime});
+        ws.emit({to:this.to , key:"MediaTime"+this.vs, val:this.playTime});
     }
 
     this.dom.play.removeClass("act");
@@ -190,7 +192,7 @@ VideoCtrl.prototype.stop = function(end){
 
     this.progress();
 
-    ws.emit({to:this.to , key:"MediaStop"});
+    ws.emit({to:this.to , key:"MediaStop"+this.vs});
 };
 
 //完成
@@ -203,14 +205,14 @@ VideoCtrl.prototype.end = function(){
 
     this.progress();
 
-    ws.emit({to:this.to , key:"MediaEnd"});
+    ws.emit({to:this.to , key:"MediaEnd"+this.vs});
 };
 
 //重新开始
 VideoCtrl.prototype.replay = function(){
     this.playTime = 0;
     this.progress();
-    ws.emit({to:this.to , key:"MediaPlay", val:this.vol, time:0});
+    ws.emit({to:this.to , key:"MediaPlay"+this.vs, val:this.vol, time:0});
 };
 
 function formatTime(seconds) {

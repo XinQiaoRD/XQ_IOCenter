@@ -108,3 +108,20 @@
     width: 10px; height: 10px; border-radius: 5px;
     background-color: #fff;
 }
+
+#Person .person{
+    position: absolute; left: 139px ; top: 239px;
+    width: 746px; height: 500px;
+    background: url("../../img/person.png") no-repeat;
+    z-index: 999;
+}
+
+#Person .btn{
+    position: absolute; width: 219px; height: 159px;
+}
+#Person .btn1{ top: 0px; left: 0px;}
+#Person .btn2{ top: 0px; left: 263px;}
+#Person .btn3{ top: 0px; left: 527px;}
+#Person .btn4{ top: 241px; left: 0px;}
+#Person .btn5{ top: 241px; left: 263px;}
+#Person .btn6{ top: 241px; left: 527px;}
